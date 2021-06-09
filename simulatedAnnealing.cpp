@@ -31,10 +31,12 @@ vector<vector<int>> randomCreateSolution(){
 	vector<int> randomSolution;
 	vector<vector<int>> randomSolutionVec;
 	
+	//create a initial solution
 	for(int i = 2; i <= data.size(); i ++){
         randomSolution.push_back(i);
     }
     
+    //shuffle the initial solution
     random_shuffle(randomSolution.begin(), randomSolution.end());
     
     bool flag = true;
@@ -42,17 +44,23 @@ vector<vector<int>> randomCreateSolution(){
     while(flag){
     	int i = 0;
     	while(i <= randomSolutionVec.size()){
+    		//if is the end of the randomSolutionVec then stop
     		if(i == randomSolutionVec.size()){
     			flag = false;
     			break;
 			} else {
+				
+				//caculate the sum of the demand
 				int sum = 0;
 				for(int j = 0; j < randomSolutionVec[i].size(); j++){
 					sum += data[randomSolutionVec[i][j] - 1][3];
 				}
+				
 				if(sum > capacity) {
 					vector<int> temp;
 					randomSolutionVec.push_back(temp);
+					
+					//split the route in half
 					int mid = (randomSolutionVec[i].size()) / 2;
 					for(int j = mid; j < randomSolutionVec[i].size(); j++){
 						randomSolutionVec[randomSolutionVec.size()-1].push_back(randomSolutionVec[i][j]);
