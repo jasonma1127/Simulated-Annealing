@@ -148,10 +148,10 @@ void simulatedAnnealing(){
 				
 			} else {
 				double R = (double) rand() / (RAND_MAX + 1.0);
-	            if(R < exp(-(difference) / Tinitial)){
-	                Scurrent = Snew;
+	            		if(R < exp(-(difference) / Tinitial)){
+	                		Scurrent = Snew;
 					shortestPath = newShortestPath;
-	            }
+	            		}
 			}		
 		}
 		
